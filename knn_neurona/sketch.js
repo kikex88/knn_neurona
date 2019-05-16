@@ -1,5 +1,7 @@
 var camara;
 
+var BotonesEntrenar;
+
 function setup() {
   createCanvas(320,240);
   background(255,0,0);
@@ -14,20 +16,38 @@ function setup() {
 
   //vamos a crear botones
   var botonLapiz = createButton('Lapiz');
-  botonLapiz.class("BotonLapiz");
+  botonLapiz.class("BotonEntrenar");
 
   var botonCelular = createButton('Celular');
-  botonCelular.class("BotonCelular");
+  botonCelular.class("BotonEntrenar");
 
   var botonMouse = createButton('Mouse');
-  botonMouse.class("BotonMouse");
+  botonMouse.class("BotonEntrenar");
 
   var botonCara = createButton('Cara');
-  botonCara.class("BotonCara");
+  botonCara.class("BotonEntrenar");
 
   var botonNada = createButton('Nada');
-  botonNada.class("BotonNada");
+  botonNada.class("BotonEntrenar");
 
+  //agregando estilo al boton
+  BotonesEntrenar = selectAll(".BotonEntrenar");
+
+  for(var B=0; B<BotonesEntrenar.length;B++)
+  {
+    BotonesEntrenar[B].style("margin","5px");
+    BotonesEntrenar[B].style("padding","6px");
+    BotonesEntrenar[B].mousePressed(presionandoBoton);
+  }
+
+}
+
+// función para realizar acción al presionar un botón
+function presionandoBoton()
+{
+  var nombre = this.elt.innerHTML;
+  console.log("has presionado "+nombre);
+  
 }
 
 function draw() {
